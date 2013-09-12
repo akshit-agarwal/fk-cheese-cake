@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(:version => 20130912124803) do
 
   create_table "points_quota", :force => true do |t|
     t.integer  "emp_id",     :limit => 8,  :null => false
-    t.string   "quota",      :limit => 20, :null => false
+    t.integer  "quota",                    :null => false
     t.string   "category",   :limit => 20, :null => false
     t.string   "level",      :limit => 20, :null => false
     t.datetime "created_at"

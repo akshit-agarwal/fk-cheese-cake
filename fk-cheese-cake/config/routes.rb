@@ -55,4 +55,16 @@ FkCheeseCake::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
+
+  match "/employee/get" => "ratings#get_employee"
+  match "/ratings/get" => "ratings#get_ratings"
+  match "/skills/get" => "ratings#get_skills"
+  match "/points/get" => "ratings#get_points"
+
+  match "/ratings/give_ratings" => "ratings#give_ratings" , :method => :post
+
+
+
+
+
 end

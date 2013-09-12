@@ -1,13 +1,29 @@
 source 'http://rubygems.org'
 
+gem 'railties', '3.1.3'
 gem 'rails', '3.1.3'
-
+gem 'activerecord', "3.1.3"
+gem 'actionpack'
+gem 'rake'
 # Bundle edge Rails instead:
-# gem 'rails',     :git => 'git://github.com/rails/rails.git'
+#gem 'mysql2'
 
-gem 'sqlite3'
+#gem 'sqlite3'
+platforms :ruby do
+  gem 'mysql2'
+  gem 'thin'
+  gem 'therubyracer'
+end
 
+platform :jruby do
+  gem 'trinidad'
+  gem 'therubyrhino'
+  gem 'jruby-openssl', '0.7.6.1.patched'
+  gem 'activerecord-jdbcmysql-adapter'
+end
 
+gem 'rest-client'
+gem 'activesupport'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -16,8 +32,10 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
-gem 'jquery-rails'
+# sc-deploy
+#gem 'sc-deploy', '0.0.115'
 
+gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
@@ -30,7 +48,42 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
+#gem 'sc-ui-core', '0.0.151'
+
+gem 'will_paginate', '3.0.2.patched'
+
+# sc_core
+#gem 'sc-core', '0.0.265'
+#gem 'sc-cache','0.0.13'
+#gem 'dalli'
+#gem 'uuidtools'
+#gem 'sc-auth', '0.0.48'
+#gem 'sc-rest-client','0.0.19'
+#gem 'sc-user-data', '0.0.5rc1'
+
+gem 'rubycas-client','2.3.5.patched'
+#gem 'sc-product', '0.0.122'
+#gem 'sc-product-search', '0.0.39'
+#gem 'sp-cms-service'
+
+#gem for ldap
+#gem 'activeldap'
+#gem 'net-ldap'
+
+#gem 'thrift', "0.9.0.1.patched"
+#gem 'cms-service', '0.0.5'
 group :test do
   # Pretty printed test output
-  gem 'turn', '~> 0.8.3', :require => false
+  gem 'turn', '0.8.2', :require => false
 end
+
+group :test, :development, :ci do
+  gem 'rcov', '0.9.11'
+  gem 'metric_fu'
+end
+#gem 'sc-metrics', "~> 0.0.21", :require => 'sc_metrics'
+gem 'formatted_rails_logger', '0.1.0'
+gem 'rack-metrics', '0.0.16', :require => false
+#gem 'sc-beacon','0.0.7'
+
+gem 'hashie'

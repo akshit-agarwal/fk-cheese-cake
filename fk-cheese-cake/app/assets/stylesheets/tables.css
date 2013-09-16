@@ -1,0 +1,101 @@
+.fk-table table, .fk-table, .fullwidth {
+	width: 100%;
+}
+.fk-table table, .fk-table-border, .fk-table-bborder{
+    border: 1px solid #d2d9e7;
+}
+.fk-table.fk-table-bborder td, .popup-table td, .popup-table th{border:0; border-bottom: 1px solid #d2d9e7;}
+.popup-table td, .popup-table th{padding: 5px;}
+.fk-table.fk-table-border .fk-table-border{border: 0;}
+
+.fk-table th, .th {
+	padding: 0 8px;
+	height: 28px;
+	background:#00648B;
+	vertical-align: middle;
+	color: #eceef3;
+	font-weight: normal;
+	text-align: left;
+    font-size: 12px;
+}
+div.th{height:18px;padding-top:5px;padding-bottom: 5px;}
+
+.fk-table th a,.fk-table .th a  {
+	color: #eceef3;
+}
+
+ .fk-table th input, .fk-table .th input {
+	vertical-align: middle;
+}
+
+.fk-table td, .fk-table .td  {
+	padding: 8px;
+}
+
+
+.fk-table tr.even , .fk-table .tr.even {
+	background-color: #edeff4;
+}
+
+.fk-table tr.selected td, .fk-table .tr .td.selected {
+	background-color: #d2d9e7;
+}
+
+.fk-table tfoot td, .fk-table .tfoot .td {
+	background-color: #d2d9e7;
+	vertical-align: middle;
+	line-height: 18px;
+}
+
+.fk-table tfoot td .perpage, fk-table .tfoot .td .perpage {
+	display: inline-block;
+	padding-left: 40px;
+	margin-top: -2px;
+}
+
+
+
+.fk-table .sort-asc, .fk-table .ajaxsort-asc, .fk-table .headerSortUp,.fk-table .header.headerSortUp:hover{
+	background-image: url(images/icon-asc.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 10px;
+}
+
+
+.fk-table .sort-desc, .fk-table .ajaxsort-desc, .fk-table .headerSortDown,.fesortabletable th.header:hover,.fk-table .header.headerSortDown:hover{
+	background-image: url(images/icon-desc.png);
+	background-repeat: no-repeat;
+	background-position: right center;
+	padding-right: 10px;
+}
+.fesortabletable th.header{cursor:pointer; padding: 0px 10px 0px 6px;}
+
+
+.fk-table .table-bar {
+    background: #d2d9e7;
+    padding: 2px;
+}
+
+.fk-table .table-toggle {
+    display: inline-block;
+    *display: inline;
+    zoom:1;
+    cursor: pointer;
+    vertical-align: middle;
+    margin: 2px 10px;
+    background: url('/assets/icon-sprite.png') no-repeat top left;
+    background-position: 0 -60px; width: 16px; height: 15px;
+}
+
+.fk-table .table-toggle.collapsed {
+     background-position: 0 -76px; width: 16px; height: 15px;
+}
+
+.fk-table tr.error, .fk-table .tr.error  {
+    border: 1px solid #bb0000;
+}
+.fk-table caption {
+    background: #0084ab;
+    color: #c0c8ca;
+}

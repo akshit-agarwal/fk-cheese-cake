@@ -1,0 +1,276 @@
+.fk-ui-tooltip {
+	background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #999999;
+    font-size: 11px;
+    padding: 10px;
+    position: absolute;
+    text-align: left;
+    max-width: 270px;
+    z-index: 1002;
+    display:none;
+}
+
+.fk-ui-tooltip-arrow {
+	background: url("/assets/tooltip_sprite.png") no-repeat scroll -0px -250px transparent;
+    display: block;
+    height: 9px;
+    position: absolute;
+    top: -9px;
+    width: 16px;
+}
+
+.fk-ui-tooltip-close {
+	background: url("/assets/tooltip_sprite.png") no-repeat scroll 0 0 transparent;
+    cursor: pointer;
+    display: block;
+    height: 12px;
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    width: 10px;
+}
+
+.fk-ui-tooltip .hover-area {
+    position: absolute;
+    top: -9px;
+    left: 0px;
+    height: 9px;
+    width: 100%;
+}
+
+.fk-ui-tooltip.middle .fk-ui-tooltip-arrow {
+    left:50%;
+}
+
+.fk-ui-tooltip.left .fk-ui-tooltip-arrow {
+    left:10px;
+}
+.fk-ui-tooltip.l-middle .fk-ui-tooltip-arrow {
+    right: -9px;
+    top: 45%;
+    background-position: -0px -184px;
+}
+.fk-ui-tooltip.r-middle .fk-ui-tooltip-arrow{
+    left:-9px;
+    top:45%;
+    background-position: -0px -118px;
+}
+
+.fk-ui-tooltip.l-middle .fk-ui-tooltip-arrow, .fk-ui-tooltip.r-middle .fk-ui-tooltip-arrow{
+     background-image: url("/assets/tooltip_sprite.png");
+     width: 9px;
+     height: 16px;
+}
+
+.fk-ui-popup {
+	padding: 10px;
+	background: #CCC;
+	background: rgba(1, 1, 1, 0.3);
+	position: absolute;
+	z-index: 999;
+	width: 425px;
+	display:none;
+	text-align:left;
+	color:#333;
+}
+
+.fk-ui-popup-container {
+	font-size: 13px;
+	background: white;
+	overflow: hidden;
+}
+
+.fk-ui-popup-header {
+	background: #EEE;
+	color: #333;
+	padding: 10px;
+	font-size: 16px;
+	position: relative;
+	padding-right: 20px;
+}
+
+.fk-ui-popup-closebutton {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: url('/assets/cashback-popup-sprite.png') no-repeat;
+	background-position: -173px 0;
+	width: 15px;
+	height: 15px;
+}
+
+.fk-ui-popup-message {
+	font-size: 11px;
+	padding:10px;
+	overflow-y:auto;
+	max-height:200px;
+}
+
+.fk-ui-goTop {
+	color:#ffffff;
+	background:url('/assets/go-to-top-box.jpg') no-repeat;
+	height:27px;
+	width:110px;
+	position:fixed;
+	right:100px;
+	top:0px;
+	padding-left:15px;
+	font-size:13px;
+	line-height:27px;
+	cursor:pointer;
+    text-align:left;
+	_position:absolute;/*hide in ie6,*/
+	_top:0px;
+}
+
+.fk-ui-loader {
+	visibility: hidden;
+	vertical-align:middle;
+}
+/**************alert pop up **********/
+.fk-alrt{
+	background: #aaa;
+	background: rgba(1, 1, 1, 0.3);
+    position: absolute;
+    z-index: 1001;
+    padding: 8px;
+}
+.fk-alrt .bd, .fk-alrt .hd, .fk-alrt .fd{
+	padding: 8px;
+}
+.fk-alrt .bd{
+	background: url("/assets/warning-message-icon-large.png") no-repeat scroll 8px 8px #FFFFFF;
+    padding-left: 45px;
+    min-height: 25px;
+}
+.fk-alrt .hd{
+	font-weight: bold;
+	font-size: 16px;
+	background: #F9D237;
+}
+.fk-alrt .fd{
+	text-align: right;
+	background: #E8E6E6;
+}
+.fk-alrt .fd .cls{
+	background: url("/assets/images/pop-sprt.png");
+	background-position: -29px 0;
+	width: 101px;
+	height: 24px;
+	cursor: pointer;
+	line-height: 20px;
+    display: inline-block;
+}
+.fk-alrt .fd .cls, .fk-alrt .fd .fk-but2{
+	margin-left: 8px;
+}
+.fk-shld{
+	position: absolute;
+	background: url("/assets/transparent-bg.png");
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+
+
+/*ui dialog*/
+.fk-ui-dialog {
+    visibility: hidden;
+}
+
+.fk-ui-dialog .shield{
+    position: fixed;
+    background: #333;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+    width:100%;
+    height: 100%;
+    _position:absolute;
+}
+
+.fk-ui-dialog .window {
+    position:fixed;
+    z-index: 1001;
+    text-align: left;
+    padding: 10px;
+    _position:absolute;
+}
+
+.fk-ui-dialog .window-absolute {
+    position: absolute;
+}
+
+.fk-ui-dialog .dialog-header, .fk-ui-dialog .dialog-custom-footer {
+    background: #00648B;
+    font-size: 16px;
+    font-weight: bold;
+    height: 30px;
+    padding: 5px;
+    color: #FFFFFF;
+    line-height: 30px;
+}
+.fk-ui-dialog .dialog-custom-footer{font-weight:normal;}
+
+.fk-ui-dialog .content {
+    background: #fff;
+    height: 100%;
+}
+
+.fk-ui-dialog .dialog-footer {
+   text-align: right;
+   background: #E8E6E6;
+   padding: 4px;
+}
+
+.fk-ui-dialog .close-icon {
+    background: url('/assets/cashback-popup-sprite.png') -173px 0 no-repeat;
+    width: 15px;
+    height: 15px;
+    position:absolute;
+    top:13px;
+    right:13px;
+    cursor: pointer;
+}
+
+.fk-ui-dialog .header-close-icon {
+    background: url('/assets/pop-sprt.png');
+    height: 28px;
+    width: 28px;
+}
+
+.fk-ui-dialog .dialog-footer .close-button,.dialog-close-button {
+    background: url("/assets/cross-close.png") 95% 68% no-repeat;
+    border: 1px solid #CCCCCC;
+    -moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+    -moz-box-shadow: 1px 1px 0.3px #9D9D9D;
+    -webkit-box-shadow: 1px 1px 0.3px #9D9D9D;
+    box-shadow: 1px 1px 0.3px #9D9D9D;
+    color: #555555;
+    cursor: pointer;
+    float: right;
+    font-size: 11px;
+    padding: 1px 18px 1px 5px;
+    /* For IE 8*/
+    background-color:#cccacb;
+    /* For IE 6,7 */
+    *background-color:#cccacb;
+}
+
+.alpha30 {
+    /* Fallback for web browsers that doesn't support RGBa */
+    background: rgb(51, 51, 51) transparent;
+    /* RGBa with 0.6 opacity */
+    background: rgba(51, 51, 51, 0.3);
+    /* For IE 5.5 - 7*/
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C333333, endColorstr=#4C333333);
+    /* For IE 8*/
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C333333, endColorstr=#4C333333)";
+}

@@ -13,3 +13,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/.idea
+.DS_Store
+.idea
+../.DS_Store
+../.idea

@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(:version => 20130912124803) do
     t.datetime "updated_at"
   end
 
-  create_table "points_quota", :force => true do |t|
+  create_table "point_quota", :force => true do |t|
     t.integer  "emp_id",     :limit => 8,  :null => false
     t.integer  "quota",                    :null => false
-    t.string   "category",   :limit => 20, :null => false
+    t.string   "vertical",   :limit => 20, :null => false
     t.string   "level",      :limit => 20, :null => false
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(:version => 20130912124803) do
     t.string   "skill_id",   :limit => 20,  :null => false
     t.integer  "points",                    :null => false
     t.string   "comments",   :limit => 200, :null => false
+    t.string   "vertical",   :limit => 20
     t.datetime "created_at"
     t.datetime "updated_at"
   end

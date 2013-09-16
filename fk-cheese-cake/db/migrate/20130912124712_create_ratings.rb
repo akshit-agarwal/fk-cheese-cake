@@ -6,6 +6,7 @@ class CreateRatings < ActiveRecord::Migration
       t.column :skill_id, :string, :limit => 20, :null=>false
       t.column :points, :int, :limit => 20, :null=>false
       t.column :comments, :string, :limit => 200, :null=>false
+      t.column :vertical, :string, :limit => 20
       t.timestamps
     end
   end

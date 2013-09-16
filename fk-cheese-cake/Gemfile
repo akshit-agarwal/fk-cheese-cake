@@ -87,3 +87,5 @@ gem 'rack-metrics', '0.0.16', :require => false
 #gem 'sc-beacon','0.0.7'
 
 gem 'hashie'
+
+gem 'bootstrap-sass'

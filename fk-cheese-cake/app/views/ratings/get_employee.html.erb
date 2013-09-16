@@ -1,0 +1,358 @@
+<div class="page-header">
+  <h1><small><%= @employee_info.emp_name %> &nbsp;&nbsp;&nbsp;<%=@employee_info.emp_id%>
+  &nbsp;&nbsp;&nbsp;<%= @employee_info.designation %></small></h1>
+
+</div>
+
+&nbsp;&nbsp;
+
+<link href="../../assets/stylesheets/tabcontent.css" rel="stylesheet" type="text/css" />
+<script src="../../assets/javascripts/tabcontent.js" type="text/javascript"></script>
+
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+<script type="text/javascript" language="javascript">// <![CDATA[
+
+function setSkill(key,flag,vertical)
+{
+
+    if(flag==1)
+    {
+        document.getElementById("skill_key").value = key;
+        document.getElementById("skill_key").readonly = true;
+        document.getElementById("vertical1").value = vertical;
+        return false;
+    }
+    else
+    {
+        document.getElementById("skill_key").readonly = false;
+        document.getElementById("vertical1").value = vertical;
+        return false;
+    }
+
+
+}
+
+function createRate()
+{
+    $.ajax({
+        type:"post",
+        url: "/ratings/add",
+        data: $("#form").serialize(),
+        success: document.getElementById("closeButton").click()
+
+    });
+    return false;
+}
+
+function removepopup()
+{
+
+    document.getElementById("myModal").style.display = "none";
+
+}
+        var commentsArr = [];
+
+       function showComments(arr)
+        {
+
+            commentsArr = arr;
+            var strcomment = "";
+            for (i=0;i<arr.length;i++)
+            {
+                strcomment = strcomment+ "<blockquote><p>"+arr[i]+"</p><small>Anonymous</small></blockquote>"
+            }
+            //alert("hi"+strcomment);
+            //document.getElementsById("commentDiv").empty();
+            //document.getElementsByName("commentDiv").innerText =  "<div>"+strcomment+"</div>";
+            //id = document.getElementsByName("commentDiv");
+            //alert("id:"+id);
+            //alert("11"+document.getElementsByName("commentDiv"));
+            //alert("11"+document.getElementsByName("commentDiv").innerHTML);
+            //document.getElementsByName("commentDiv").innerText = strcomment
+            //alert("12"+document.getElementsById("commentDiv").innerHTML);
+            //document.getElementsByName("commentDiv").append($(strcomment));
+            $('#commentDiv').append(strcomment);
+            //$('#myModal2').modal('show');
+
+            return false;
+        }
+</script>
+
+<script>
+$('#pb').css({'background-image': 'none','background-color': "red"})
+</script>
+
+<% levelMap =
+           {'GOLD'=>"../public/../gold.jpg",
+            'SILVER'=>"../public/../silver.jpg",
+            'BRONZE' => "../public/../bronze.jpg",
+            'Base'=>""
+           }
+%>
+
+<ul class="tabs">
+  <li><a href="#tech" onmousemove="removepopup();">Technology  <img src='<%= levelMap[@tech_level] %>' alt="" height ="10" width="20"> </a></li>
+  <li><a href="#comm" >Communication <img src='<%= levelMap[@comm_level] %>' alt="" height ="10" width="20"> </a> </li>
+  <li><a href="#team_work" >Team-Work <img src='<%= levelMap[@tw_level] %>' alt="" height ="10" width="20"> </a></li>
+  <li><a href="#CQ">CQ <img src='<%= levelMap[@cq_level] %>' alt="" height ="10" width="20"> </a></li>
+  <li><a href ="#Analytics"> Analytics </a></li>
+
+</ul>
+
+
+
+<form action="/ratings/add" method="post" name="form" id="form">
+
+  <div class="tabcontents" style="overflow:hidden">
+
+    <div id="tech">
+      <div id="role_list" class="fk-panel line tmargin10">
+        <div id="messages_table" class="fk-table">
+          <div class="line" style="overflow: auto">
+            <table>
+              <thead>
+              <tr>
+                <th>SKill</th>
+                <th>Karma Points</th>
+                <th> </th>
+              </tr>
+              </thead>
+
+              <% @tech_ratings.keys.each do |key| %>
+                  <tr>
+                    <td><a data-toggle="modal" onclick = "showComments(<%=@tech_ratings[key]['comments']%>)"  href="#myModal2"> <%= key %>
+                    </a>
+                      <div class="progress">
+                        <div id='pb' class="bar" style="width: <%=@tech_ratings[key]['points']/2 %>%"></div>
+                      </div>
+                    </td>
+                    <td><%= @tech_ratings[key]['points']%></td>
+                    <td>
+                      <a data-toggle="modal" onclick="setSkill('<%=key%>',1,'tech');" href="#myModal" class="btn btn-primary btn-lg">Vote</a>
+
+                    </td>
+
+                  </tr>
+
+              <% end%>
+
+              <tr><td>Skill Not Present? </td><td><a data-toggle="modal" onclick="setSkill('a',0,'tech');" href="#myModal" class="btn btn-primary btn-lg">Add New Skill</a></td></tr>
+
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="comm">
+      <div id="role_list" class="fk-panel line tmargin10">
+        <div id="messages_table" class="fk-table">
+          <div class="line" style="overflow: auto">
+            <table>
+              <thead>
+              <tr>
+                <th>SKill</th>
+                <th>Karma Points</th>
+                <th></th>
+              </tr>
+              </thead>
+
+              <% @communication_ratings.keys.each do |key| %>
+                  <tr>
+                    <td><a data-toggle="modal" onclick = "showComments(<%=@communication_ratings[key]['comments']%>)"  href="#myModal2" > <%= key %> </a>
+                      <div class="progress">
+                        <div id='pb' class="bar" style="width: <%=@communication_ratings[key]['points']/2 %>%"></div>
+                      </div></td>
+                    <td> <%= @communication_ratings[key]['points']%>
+
+                    </td>
+                    <td>
+                      <a data-toggle="modal" onclick="setSkill('<%=key%>',1,'communication');" href="#myModal" class="btn btn-primary btn-lg">Vote</a>
+
+                    </td>
+
+                  </tr>
+
+              <% end%>
+
+
+              <tr><td>Skill Not Present? </td><td><a data-toggle="modal" onclick="setSkill('a',0,'communication');" href="#myModal" class="btn btn-primary btn-lg">Add New Skill</a></td></tr>
+
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="team_work">
+      <div id="role_list" class="fk-panel line tmargin10">
+        <div id="messages_table" class="fk-table">
+          <div class="line" style="overflow: auto">
+            <table>
+              <thead>
+              <tr>
+                <th>SKill</th>
+                <th>Karma Points</th>
+                <th></th>
+              </tr>
+              </thead>
+
+              <% @tw_ratings.keys.each do |key| %>
+                  <tr>
+                    <td><a data-toggle="modal" onclick = "showComments(<%=@tw_ratings[key]['comments']%>)"  href="#myModal2" > <%= key %> </a>
+                      <div class="progress">
+                        <div id='pb' class="bar" style="width: <%=@tw_ratings[key]['points']/2 %>%"></div>
+                      </div>
+                    </td>
+                    <td> <%= @tw_ratings[key]['points']%></td>
+                    <td>
+                      <a data-toggle="modal" onclick="setSkill('<%=key%>',1,'team_work');" href="#myModal" class="btn btn-primary btn-lg">Vote</a>
+
+                    </td>
+
+                  </tr>
+
+              <% end%>
+
+
+              <tr><td>Skill Not Present? </td><td><a data-toggle="modal" onclick="setSkill('a',0,'team_work');" href="#myModal" class="btn btn-primary btn-lg">Add New Skill</a></td></tr>
+
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="CQ">
+      <div id="role_list" class="fk-panel line tmargin10">
+        <div id="messages_table" class="fk-table">
+          <div class="line" style="overflow: auto">
+            <table>
+              <thead>
+              <tr>
+                <th>SKill</th>
+                <th>Karma Points</th>
+                <th></th>
+              </tr>
+              </thead>
+
+              <% @cq_ratings.keys.each do |key| %>
+                  <tr>
+                    <td><a data-toggle="modal" onclick = "showComments(<%=@cq_ratings[key]['comments']%>)"  href="#myModal2" > <%= key %> </a>
+                      <div class="progress">
+                        <div id='pb' class="bar" style="width: <%=@cq_ratings[key]['points']/2 %>%"></div>
+                      </div>
+                    </td>
+
+
+                    <td> <%= @cq_ratings[key]['points']%></td>
+                    <td>
+                      <a id = "test" data-toggle="modal" onclick="setSkill('<%=key%>',1,'cq');" href="#myModal" class="btn btn-primary btn-lg">Vote</a>
+
+                    </td>
+
+                  </tr>
+
+              <% end%>
+
+              <tr><td>Skill Not Present? </td><td><a data-toggle="modal" onclick="setSkill('a',0,'cq');" href="#myModal" class="btn btn-primary btn-lg">Add New Skill</a></td></tr>
+
+
+            </table>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Rate</h4>
+        </div>
+        <div class="modal-body">
+          <table>
+            <tr>
+              <td>Skill: </td><td><input type="text" id="skill_key" name="skill_key" placeholder="Enter new Skill"></td>
+
+              <td>Verical: </td><td><input type="text" id="vertical1" name="vertical" readonly="true"></td>
+              <td><input name="ref_emp_id" value=1813 hidden="true"></td>
+              <td><input name="emp_id" value='<%=@employee_info.emp_id%>' hidden="true"></td>
+
+            </tr>
+
+            <tr><td>Score: </td></tr>
+          </table>
+          <table>
+            <tr>
+              <td>
+                <input type="radio" name="score" id="option1" value=1> 1
+              </td>
+              <td>
+                <input type="radio" name="score" id="option2" value=2> 2
+              </td>
+              <td>
+                <input type="radio" name="score" id="option3" value=3> 3
+              </td>
+            </tr>
+          </table>
+          <table>
+            <tr><td>Reason</td></tr>
+            <tr><td><textarea name="comments" rows="2" cols="30"></textarea></td>
+            </tr>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="closeButton" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button type="button" onclick="createRate();" class="btn btn-primary">Save changes</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+  <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          <h4 class="modal-title">Comments</h4>
+        </div>
+        <div class="modal-body" id="commentDiv" name = "commentDiv">
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="closeButton" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div id="Analytics">
+
+    <img src="../public/../techkarma.png" >
+    <img src="../public/../commkarma.png" >
+    <img src="../public/../coolkarma.png" >
+
+  </div>
+
+</form>
+
+

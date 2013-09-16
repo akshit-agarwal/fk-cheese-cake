@@ -56,15 +56,11 @@ FkCheeseCake::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
 
+  root :to => "home#home"
   match "/employee/get" => "ratings#get_employee"
   match "/ratings/get" => "ratings#get_ratings"
   match "/skills/get" => "ratings#get_skills"
   match "/points/get" => "ratings#get_points"
-
-  match "/ratings/give_ratings" => "ratings#give_ratings" , :method => :post
-
-
-
-
+  match "/ratings/add" => "ratings#give_ratings" , :method => :post
 
 end

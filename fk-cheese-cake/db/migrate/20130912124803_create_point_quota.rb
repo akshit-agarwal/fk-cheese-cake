@@ -1,6 +1,6 @@
 class CreatePointQuota < ActiveRecord::Migration
   def self.up
-    create_table :points_quota do |t|
+    create_table :point_quota do |t|
       t.column :emp_id, :bigint, :null=>false
       t.column :quota, :int, :limit => 20, :null=>false
       t.column :category, :string, :limit => 20, :null=>false
@@ -10,6 +10,6 @@ class CreatePointQuota < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :points_quota
+    drop_table :point_quota
   end
 end
